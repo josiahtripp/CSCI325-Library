@@ -1,3 +1,11 @@
+/**
+ * @file Library.h
+ * @author Josiah Tripp, Elise Lightner
+ * @date 2024-10-22
+ * @brief Defines the Library class and its associated methods
+ * 
+ * 
+ */
 #ifndef LIBRARY_H
 #define LIBRARY_H
 
@@ -16,6 +24,14 @@ typedef struct book{
     int year;
 } book;
 
+
+/**
+ * Holds a linked-list of books. Can search, sort (when loading in), delete, and read in & write out books to a file.
+ *
+ * @class Library{ Library.h "l-copy/Library.h"
+ * @brief Defines a Library object and its associated methods & member variables
+ *
+ */
 class Library{
 
     private:

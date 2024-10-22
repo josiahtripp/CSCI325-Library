@@ -1,3 +1,12 @@
+/**
+ * @file Library.cpp
+ * @author Josiah Tripp, Elise Lightner
+ * @date 2024-10-22
+ * @brief Defines the method implementations for the Library class in "Library.h"
+ * 
+ * 
+ */
+
 #include "Library.h"
 #include <iostream>
 #include <string>
