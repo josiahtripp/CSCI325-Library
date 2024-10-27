@@ -1,7 +1,7 @@
 /**
  * @file Library.h
  * @author Josiah Tripp, Elise Lightner
- * @date 2024-10-22
+ * @date 2024-10-27
  * @brief Defines the Library class and its associated methods
  * 
  * 
@@ -12,16 +12,14 @@
 #include <string>
 #include <list>
 
-typedef std::string str;
-
 typedef struct book{
 
-    str title;
-    str author;
-    int pages;
-    str isbn;
-    float cover_price;
+    std::string title;
+    std::string author;
     int year;
+    std::string isbn;
+    int pages;
+    float cover_price;
 } book;
 
 /**
@@ -35,18 +33,18 @@ class Library{
 
     private:
         std::list<book> books;
-        int book_count;
     public:
         Library();
         ~Library();
         void push_front(book __book);
         void push_back(book __book);
-        bool read_from_file(str filename);// Return false if file can't be opened
-        bool write_to_file(str filename);// Return false if the file can't be opened
+        bool read_from_file(std::string filename);// Return false if file can't be opened
+        bool write_to_file(std::string filename);// Return false if the file can't be opened
         void insert_sorted(book __book);
-        bool find_author(str author);// Return true if author's name is found, false if not
-        bool find_album(str title);// Return true if book title is found, false if not
+        bool find_author(std::string author);// Return true if author's name is found, false if not
+        bool find_album(std::string title);// Return true if book title is found, false if not
         void print();
-        bool delete_book(str title, str author);// Return true if book was found and delete, false if not found (and not deleted)
+        bool delete_book(std::string title, std::string author);// Return true if book was found and delete, false if not found (and not deleted)
+        int count(); // Return the number of books in the current library
 };
 #endif
