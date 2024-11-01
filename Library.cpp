@@ -1,7 +1,7 @@
 /**
  * @file Library.cpp
  * @author Josiah Tripp, Elise Lightner
- * @date 2024-10-27
+ * @date 2024-10-31
  * @brief Defines the method implementations for the Library class in "Library.h"
  * 
  * 
@@ -14,16 +14,6 @@
 #include <fstream>
 
 using namespace std;
-
-Library::Library(){
-
-    book_count = 0;
-}
-
-Library::~Library(){
-
-    book_count = 0;
-}
 
 void Library::push_front(book __book){
 
@@ -134,9 +124,7 @@ bool Library::find_album(string title){
 
 void Library::print(){
 
-    book current;
-
-    while(){
+    for(book current : books){
 
         cout << "'" << current.title << "' by " << current.author << endl;
         cout << "\tYear of Publication: " << current.year << endl;
@@ -148,6 +136,16 @@ void Library::print(){
 
 bool Library::delete_book(string title, string author){
 
+    for(list<book>::iterator it = books.begin(); it != books.end(); it++){// Iterare through books
+
+        // Book is found, delete
+        if(it->title == title && it->author == author){
+
+            books.erase(it);
+            return true;
+        }
+    }
+    return false;
 }
 
 int Library::count(){
