@@ -34,8 +34,6 @@ class Library{
     private:
         std::list<book> books;
     public:
-        Library();
-        ~Library();
         void push_front(book __book);
         void push_back(book __book);
         bool read_from_file(std::string filename);// Return false if file can't be opened
