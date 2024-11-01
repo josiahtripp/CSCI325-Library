@@ -18,7 +18,7 @@ int main(){
 
     Library lib;
 
-    cout << "Welcome to the UTM Library! (Note* we are not in any way endorsed or affiliated with the Paul Meek Library)\n";
+    cout << "Welcome to the UTM Library! (Note* we are not in any way endorsed by or affiliated with the Paul Meek Library)\n";
     print_options();
 
     while(true){
