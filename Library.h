@@ -1,7 +1,7 @@
 /**
  * @file Library.h
  * @author Josiah Tripp, Elise Lightner
- * @date 2024-10-22
+ * @date 2024-11-01
  * @brief Defines the Library class and its associated methods
  * 
  * 
@@ -12,16 +12,28 @@
 #include <string>
 #include <list>
 
-typedef std::string str;
-
+/**
+ * Holds information about a book
+ *
+ * @class struct Library.h "l-copy/Library.h"
+ * @brief Defines a book struct to be used within the library
+ *
+ * @std::string title The title of the book.
+ * @std::string author The author of the book.
+ * @int year The year of publication of the book.
+ * @std::string isbn The isbn number of the book.
+ * @int pages The number of pages in the book.
+ * @float cover_price The price of the book (is USD $)
+ *
+ */
 typedef struct book{
 
-    str title;
-    str author;
-    int pages;
-    str isbn;
-    float cover_price;
+    std::string title;
+    std::string author;
     int year;
+    std::string isbn;
+    int pages;
+    float cover_price;
 } book;
 
 /**
@@ -34,19 +46,86 @@ typedef struct book{
 class Library{
 
     private:
-        std::list<book> books;
-        int book_count;
+  std::list<book> books;// The "library" list of books
     public:
-        Library();
-        ~Library();
-        void push_front(book __book);
-        void push_back(book __book);
-        bool read_from_file(str filename);// Return false if file can't be opened
-        bool write_to_file(str filename);// Return false if the file can't be opened
-        void insert_sorted(book __book);
-        bool find_author(str author);// Return true if author's name is found, false if not
-        bool find_album(str title);// Return true if book title is found, false if not
-        void print();
-        bool delete_book(str title, str author);// Return true if book was found and delete, false if not found (and not deleted)
+
+/**
+ * Adds a book to the front of the library list
+ *
+ * @param book __book The book to add
+ * @pre
+ * @return void 
+ * @post The book has been added to the front of the library list
+ * 
+ */
+  void push_front(book __book);
+
+/**
+ * Adds a book to the back of the library list 
+ *
+ * @param book __book The book to add
+ * @pre 
+ * @return void 
+ * @post the book has been added to the back of the library list
+ * 
+ */
+  void push_back(book __book);
+
+/**
+ * Reads in a library (properly formatted list of books) from a file
+ *
+ * @param std::string filename The name of the library file
+ * @pre 
+ * @return bool Whether the file could be read in or not
+ * @post All books within the library file specified by filename have been read into the current library list
+ * 
+ */
+  bool read_from_file(std::string filename);
+
+/**
+ * Writes out the current library (list of books) to a properly formatted, sorted file
+ *
+ * @param std::string filename The name of the file to write out
+ * @pre 
+ * @return bool Whether the file could be created/written out or not
+ * @post All books in the current library list have been written out the file specified by filename
+ * 
+ */
+  bool write_to_file(std::string filename);
+  void insert_sorted(book __book);
+  bool find_author(std::string author);// Return true if author's name is found, false if not
+  bool find_album(std::string title);// Return true if book title is found, false if not
+
+/**
+ * Prints out all books in the current library and their associated information 
+ *
+ * @pre 
+ * @return void 
+ * @post All books in the current library and their associated information have been printed to stdout
+ * 
+ */
+  void print();
+
+/**
+ * Removes a book from the current library list
+ *
+ * @param std::string title The title of the book to remove
+ * @param std::string author the author of the book to remove
+ * @pre 
+ * @return bool Whether the book could be found and removed or not
+ * @post The book specified by title & author name has been removed from the current library list
+ * 
+ */
+  bool delete_book(std::string title, std::string author);
+
+/**
+ * Accessor for the current library list books,size() method
+ *
+ * @pre 
+ * @return int The value returned by the library list books.size() method
+ * @post 
+ * 
+ */
+  int count();
 };
 #endif
