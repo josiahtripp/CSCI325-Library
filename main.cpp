@@ -1,7 +1,7 @@
 /**
  * @file main.cpp
  * @author Josiah Tripp, Elise Lightner
- * @date 2024-10-27
+ * @date 2024-11-08
  * @brief Driver & test program for the "Library" class
  * 
  * 
@@ -29,6 +29,7 @@ int main(){
         // Get user selection
         char user_input;
         cin >> user_input;
+        cin.get();
 
         // Hold user input & are are passed as method arguments
         string filename;
@@ -74,7 +75,7 @@ int main(){
 
             case '4':// Print all books by author
                 cout << "Please enter the name of the author you wish to search: ";
-                cin >> author;
+                getline(cin, author);
                 cout << endl;
                 
                 lib.find_author(author);// Print out all of the author's books
@@ -82,7 +83,7 @@ int main(){
 
             case '5':// Find all books with a given name
                 cout << "Please enter the book title to search: ";
-                cin >> title;
+                getline(cin, title);
                 cout << endl;
 
                 lib.find_album(title);// Print out all books with the given name
@@ -90,16 +91,16 @@ int main(){
 
             case '6':// Add a book to the library
                 cout << "Please enter the title of the book to add: ";
-                cin >> tmp_book.title;
-                cout << "Please enter the author (full name) of the book to add";
-                cin >> tmp_book.author;
-                cout << "Please enter the ISBN number of the book to add";
+                getline(cin, tmp_book.title);
+                cout << "Please enter the author (full name) of the book to add: ";
+                getline(cin, tmp_book.author);
+                cout << "Please enter the ISBN number of the book to add: ";
                 cin >> tmp_book.isbn;
                 cout << "Please enter the number of pages in the book to add: ";
                 cin >> tmp_book.pages;
-                cout << "Please enter the year of publication of the book to add:";
+                cout << "Please enter the year of publication of the book to add: ";
                 cin >> tmp_book.year;
-                cout << "Please enter the cover price of the book to add";
+                cout << "Please enter the cover price of the book to add: ";
                 cin >> tmp_book.cover_price;
                 cout << endl;
 
@@ -111,9 +112,9 @@ int main(){
 
             case '7':// Remove a book from the library
                 cout << "Please enter the title of the book to remove: ";
-                cin >> title;
+                getline(cin, title);
                 cout << "Please enter the author or the book to remove: ";
-                cin >> author;
+                getline(cin, author);
                 cout << endl;
             
                 if(lib.delete_book(title, author)){// User found & deleted

@@ -7,9 +7,14 @@ BINARY = library
 
 default: Library
 
-Library:
-	$(CC) $(CFLAGS) -c main.cpp Library.cpp
+Library: main.o Library.o
 	$(CC) $(CFLAGS) -o $(BINARY) main.o Library.o
+
+main.o:
+	$(CC) $(CFLAGS) -c main.cpp
+
+Library.o:
+	$(CC) $(CFLAGS) -c Library.cpp
 
 clean:
 	$(RM) *.o *~ test

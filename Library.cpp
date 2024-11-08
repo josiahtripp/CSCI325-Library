@@ -1,7 +1,7 @@
 /**
  * @file Library.cpp
  * @author Josiah Tripp, Elise Lightner
- * @date 2024-10-31
+ * @date 2024-11-08
  * @brief Defines the method implementations for the Library class in "Library.h"
  * 
  * 
@@ -13,6 +13,8 @@
 #include <string>
 #include <fstream>
 using namespace std;
+
+Library::Library(){};// Blank (default) constructor
 
 void Library::push_front(book __book){
 
@@ -45,10 +47,10 @@ bool Library::read_from_file(string filename){
     getline(read_in, tmp_book.title);
     getline(read_in, tmp_book.author);
     read_in >> tmp_book.year >> tmp_book.isbn >> tmp_book.pages >> tmp_book.cover_price;
-    read_in.get();
 
     while(read_in){
 
+        read_in.get();
         if(count() == 0){// First entry in the list
             push_front(tmp_book);
         }
@@ -74,7 +76,6 @@ bool Library::read_from_file(string filename){
         getline(read_in, tmp_book.title);
         getline(read_in, tmp_book.author);
         read_in >> tmp_book.year >> tmp_book.isbn >> tmp_book.pages >> tmp_book.cover_price;
-        read_in.get();
     }
     
     read_in.close();
@@ -128,6 +129,7 @@ bool Library::find_author(string author){
     if (!found) {
         cout << "No books found by author: " << author << endl;
     }
+    cout << endl;
     return found;
 }
 
@@ -136,12 +138,11 @@ bool Library::find_album(string title){
 bool found = false;
     for (const auto &b : books) {
         if (b.title == title) {
-            cout << "Title: " << b.title << "\n"
-                 << "Author: " << b.author << "\n"
-                 << "Pages: " << b.pages << "\n"
-                 << "ISBN: " << b.isbn << "\n"
-                 << "Price: $" << fixed << setprecision(2) << b.cover_price << "\n"
-                 << "Year: " << b.year << "\n";
+            cout << "'" << b.title << "' by " << b.author << endl;
+            cout << "\tYear of Publication: " << b.year << endl;
+            cout << "\tISBN: " << b.isbn << endl;
+            cout << "\tPages: " << b.pages << endl;
+            cout << "\tCover Price: $" << b.cover_price << "\n\n";
             found = true;
         }
     }
@@ -159,7 +160,7 @@ void Library::print(){
         cout << "\tYear of Publication: " << current.year << endl;
         cout << "\tISBN: " << current.isbn << endl;
         cout << "\tPages: " << current.pages << endl;
-        cout << "\tCover Price: " << current.cover_price << "\n\n";
+        cout << "\tCover Price: $" << current.cover_price << "\n\n";
     }
 }
 

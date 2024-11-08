@@ -1,7 +1,7 @@
 /**
  * @file Library.h
  * @author Josiah Tripp, Elise Lightner
- * @date 2024-11-01
+ * @date 2024-11-08
  * @brief Defines the Library class and its associated methods
  * 
  * 
@@ -23,7 +23,7 @@
  * @int year The year of publication of the book.
  * @std::string isbn The isbn number of the book.
  * @int pages The number of pages in the book.
- * @float cover_price The price of the book (is USD $)
+ * @float cover_price The price of the book (in USD $)
  *
  */
 typedef struct book{
@@ -48,6 +48,15 @@ class Library{
     private:
   std::list<book> books;// The "library" list of books
     public:
+
+/**
+ * Default constructor
+ *
+ * @pre
+ * @post 
+ * 
+ */
+  Library();
 
 /**
  * Adds a book to the front of the library list
